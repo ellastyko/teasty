@@ -1,15 +1,15 @@
 import * as VueRouter from 'vue-router';
 
 // Components
-import Home from './views/Home/HomePage';
+import Home from './views/Home/HomePage.vue';
 
-import Login from './views/Auth/LoginPage';
-import Register from './views/Auth/RegisterPage';
-import ForgotPasswordPage from "./views/Auth/ForgotPasswordPage";
-import PasswordResetPassword from "./views/Auth/PasswordResetPage";
-import ProfilePage from './views/User/ProfilePage'
+import Login from './views/Auth/LoginPage.vue';
+import Register from './views/Auth/RegisterPage.vue';
+import ForgotPasswordPage from "./views/Auth/ForgotPasswordPage.vue";
+import PasswordResetPassword from "./views/Auth/PasswordResetPage.vue";
+import ProfilePage from './views/User/ProfilePage.vue'
 
-import Page404 from './views/Errors/Page404';
+import Page404 from './views/Errors/Page404.vue';
 
 const routes = [
     // Auth
