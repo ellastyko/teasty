@@ -39,20 +39,12 @@
 </template>
 
 <script>
-
-import { email, minLength, required } from "@vuelidate/validators";
-import useVuelidate from "@vuelidate/core";
-import CsrfToken from "../CsrfToken";
+import CsrfToken from "../CsrfToken.vue";
 
 
 export default {
     name: "LoginForm",
     components: {CsrfToken},
-    setup () {
-        return {
-            v$: useVuelidate()
-        }
-    },
     data() {
         return {
             form: {
@@ -63,45 +55,12 @@ export default {
             }
         }
     },
-    validations() {
-        return {
-            form: {
-                name: { },
-                surname: { },
-                email: { required, email },
-                password: {
-                    required,
-                    minLength: minLength(6),
-                    containsSpecial: value => !/[#?!@$%^&*-]/.test(value)
-                }
-            }
-        }
-    },
     mounted() {
 
     },
     methods: {
 
         handleSubmit(form) {
-
-            // this.$v.formData.$touch()
-            // if (!this.$v.formData.error === false)
-            //     return 0
-            //
-            // if (this.terms != true)
-            //     return 0
-
-            setTimeout( () => form.target.submit(), 2000)
-
-
-            // axios.post(`/api/auth/login`, this.form)
-            //     .then(response => {
-            //         console.log(response)
-            //         console.log($cookies.keys())
-            //     })
-            //     .catch(error => {
-            //         console.log(error.response)
-            //     })
 
         }
     }

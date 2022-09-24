@@ -16,14 +16,14 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/scss/app.scss'])
 </head>
 <body>
     <div id="app">
         @yield('content')
     </div>
     <router-view></router-view>
+    @yield('scripts')
+    @vite('resources/js/app.js')
 </body>
-@yield('scripts')
-    <script src="{{ asset('js/app.js') }}"></script>
 </html>
