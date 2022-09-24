@@ -56,6 +56,9 @@ optimize:
 chmod:
 	sudo chmod -R 777 storage
 
+frontend:
+	$(ARTISAN) frontend:translations && $(ARTISAN) frontend:validation
+
 
 schedule:
 	$(ARTISAN) schedule:run
