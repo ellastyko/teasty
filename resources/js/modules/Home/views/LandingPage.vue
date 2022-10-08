@@ -1,6 +1,6 @@
 <template>
     <div>
-        <AutoComplete v-model="selectedCountry" :suggestions="filteredCountriesBasic" @complete="searchCountry($event)" optionLabel="name" />
+
     </div>
 </template>
 
@@ -12,7 +12,6 @@
         components: { },
         mounted() {
         },
-        filters: {  },
         computed: {
 
         },

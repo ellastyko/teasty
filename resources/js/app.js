@@ -1,10 +1,12 @@
 import './bootstrap';
 import Container from "./foundation/services/container";
+
 // Components
 import authComponents from "./modules/Auth";
 import homeComponents from "./modules/Home"
 import receiptComponents from "./modules/Receipt";
 
+// PrimeVue
 import PrimeVue from 'primevue/config';
 import primeVueComponents from "./components/primevue";
 

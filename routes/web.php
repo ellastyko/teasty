@@ -22,7 +22,7 @@ use App\Http\Controllers\Web\{
 |
 */
 
-Route::get('/', LandingController::class);
+Route::get('/', LandingController::class)->name('landing');
 
 Route::get('/login', LoginController::class)->name('login');
 Route::get('/register', RegisterController::class)->name('register');

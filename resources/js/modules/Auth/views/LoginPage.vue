@@ -1,6 +1,6 @@
 <template>
     <section class="container">
-        LoginPage
+
     </section>
 </template>
 
