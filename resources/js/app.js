@@ -1,19 +1,19 @@
 import './bootstrap';
-import router from "./router";
-import  { createApp } from 'vue';
-import VueCookies from 'vue-cookies'
-import Store from './store/index';
-import Components from "./components";
+import Container from "./foundation/services/container";
+// Components
+import authComponents from "./modules/Auth";
+import homeComponents from "./modules/Home"
+import receiptComponents from "./modules/Receipt";
 
-const app = createApp({
-    Components
-});
+import PrimeVue from 'primevue/config';
+import primeVueComponents from "./components/primevue";
 
-app.use(
-    Store,
-    VueCookies,
-    router
-);
-
-app.mount("#app");
-
+const app = new Container()
+    .use(PrimeVue)
+    .components({
+        ...authComponents,
+        ...homeComponents,
+        ...receiptComponents,
+        ...primeVueComponents
+    })
+    .mount();

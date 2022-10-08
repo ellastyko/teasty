@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <password-reset-page/>
+    <div id="app">
+        <password-reset-page/>
+    </div>
 @endsection

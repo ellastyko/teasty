@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <users-list-page/>
+    <div id="app">
+        <users-list-page/>
+    </div>
 @endsection
 

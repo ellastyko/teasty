@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <register-page/>
+    <div id="app">
+        <register-page/>
+    </div>
 @endsection

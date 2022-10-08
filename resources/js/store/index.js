@@ -1,15 +1,12 @@
 import { createStore } from 'vuex'
 
 import user from './modules/user'
-import post from "./modules/post";
-import categories from "./modules/categories";
+import receipt from "./modules/receipt";
 
 export default new createStore({
-
     modules: {
         user,
-        post,
-        categories
+        receipt,
     },
-    strict: process.env.NODE_ENV !== 'production'
+    strict: import.meta.env.NODE_ENV !== 'production'
 })

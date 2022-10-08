@@ -19,11 +19,8 @@
     @vite(['resources/css/app.css', 'resources/scss/app.scss'])
 </head>
 <body>
-    <div id="app">
-        @yield('content')
-    </div>
-    <router-view></router-view>
-    @yield('scripts')
+    @yield('content')
     @vite('resources/js/app.js')
+    @yield('scripts')
 </body>
 </html>

@@ -13,7 +13,7 @@ export default {
 
     data() {
         return {
-            csrf: document.head.querySelector('meta[name="csrf-token"]') ? document.head.querySelector('meta[name="csrf-token"]').content : '',
+            csrf: document.head.querySelector('meta[name="csrf-token"]')?.content,
         }
     },
 }

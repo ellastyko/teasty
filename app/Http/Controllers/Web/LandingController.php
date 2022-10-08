@@ -10,11 +10,10 @@ class LandingController extends Controller
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\View\View
      */
-    public function __invoke(Request $request)
+    public function __invoke()
     {
-        return view('home.home');
+        return view('landing.landing');
     }
 }
