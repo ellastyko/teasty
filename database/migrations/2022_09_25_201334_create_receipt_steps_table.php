@@ -17,7 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('text');
             $table->string('image')->nullable();
-            $table->timestamps();
+
+            $table->foreignId('receipt_id')
+                ->nullable()
+                ->constrained('receipts')
+                ->nullOnDelete();
         });
     }
 

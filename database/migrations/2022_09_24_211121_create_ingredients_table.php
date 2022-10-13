@@ -18,10 +18,9 @@ return new class extends Migration
             $table->string('name');
 
             $table->foreignId('receipt_id')
-                ->constrained('receipt')
+                ->nullable()
+                ->constrained('receipts')
                 ->nullOnDelete();
-
-            $table->timestamps();
         });
     }
 

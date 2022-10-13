@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description');
 
             $table->foreignId('author')
+                ->nullable()
                 ->constrained('users')
                 ->nullOnDelete();
 

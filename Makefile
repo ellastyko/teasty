@@ -1,43 +1,46 @@
 OS := $(shell uname)
+DC := docker-compose exec
 ARTISAN := php artisan
 NODE := npm # or yarn
-DC := docker-compose exec
-MYSQL := $(DC) app
-SAIL := ./vendor/bin/sail
+APP := $(DC) app
+SSH := $(APP) bash
 
-setup: env keygen deps up migrate seeds chmod
-start: up node-dev
-build: env deps up node-build
+setup: env keygen deps start migrate seeds chmod
+good: deps clear migrate seeds node-dev
+build: env deps start node-build
 
-restart: down up
+restart: stop start
 
-up:
-	$(SAIL) up -d --build
+start:
+	@$(DC) up -d --build
 
-down:
-	$(SAIL) down
+stop:
+	@$(DC) down
 
 node-dev:
-	$(NODE) run dev
+	@$(NODE) run dev
 
 node-build:
-	$(NODE) run build
+	@$(NODE) run build
 
-serve:
-	$(ARTISAN) serve
+ssh:
+	@$(APP) bash
 
 # DB commands
 migrate:
-	$(SAIL) artisan migrate
+	@$(APP) $(ARTISAN) migrate
 
 refresh:
-	$(SAIL) migrate:refresh
+	@$(APP) $(ARTISAN) migrate:refresh
 
 fresh:
-	$(SAIL) migrate:fresh
+	@$(APP) $(ARTISAN) migrate:fresh
 
 seeds:
-	$(SAIL) db:seed
+	@$(APP) $(ARTISAN) db:seed
+
+truncate:
+	@$(APP) $(ARTISAN) db:wipe
 
 # Dev
 env:
@@ -50,7 +53,7 @@ deps:
 	composer install
 	$(NODE) install
 
-optimize:
+clear:
 	$(ARTISAN) optimize:clear
 
 chmod:
@@ -76,3 +79,6 @@ phpcs:
 
 phpcbf:
 	./vendor/bin/phpcbf --standard=./phpcs.xml
+
+phpmd:
+	sudo ./vendor/bin/phpmd app xml phpmd.xml  --reportfile reports/phpmd-report.xml
