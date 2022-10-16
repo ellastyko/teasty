@@ -2,17 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\traits\HasReceipt;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Receipt extends Model
+class ReceiptStep extends Model
 {
-    use HasFactory;
-
-    /**
-     * @var array
-     */
-    protected $with = ['user'];
+    use HasFactory, HasReceipt;
 
     /**
      * The attributes that are mass assignable.
@@ -21,9 +17,8 @@ class Receipt extends Model
      */
     protected $fillable = [
         'title',
-        'description',
-        'cook_time',
+        'content',
         'image',
-        'author',
+        'receipt_id',
     ];
 }

@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\traits\HasRoles;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +22,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
+        'display_name',
         'email',
         'password',
     ];
@@ -49,5 +53,21 @@ class User extends Authenticatable
     public static function current(): mixed
     {
         return app(Guard::class)->user();
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullName(): string
+    {
+        return ucfirst($this->name) . ' ' . ucfirst($this->surname);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function receipts(): HasMany
+    {
+        return $this->hasMany(Receipt::class);
     }
 }

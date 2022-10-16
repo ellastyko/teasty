@@ -3,7 +3,7 @@ import Container from "./foundation/services/container";
 
 // Components
 import authComponents from "./modules/Auth";
-import homeComponents from "./modules/Home"
+import landingComponents from "./modules/Landing"
 import receiptComponents from "./modules/Receipt";
 
 // PrimeVue
@@ -14,7 +14,7 @@ const app = new Container()
     .use(PrimeVue)
     .components({
         ...authComponents,
-        ...homeComponents,
+        ...landingComponents,
         ...receiptComponents,
         ...primeVueComponents
     })

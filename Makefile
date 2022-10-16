@@ -4,6 +4,7 @@ ARTISAN := php artisan
 NODE := npm # or yarn
 APP := $(DC) app
 SSH := $(APP) bash
+SAIL := ./vendor/bin/sail
 
 setup: env keygen deps start migrate seeds chmod
 good: deps clear migrate seeds node-dev
@@ -12,10 +13,10 @@ build: env deps start node-build
 restart: stop start
 
 start:
-	@$(DC) up -d --build
+	@$(SAIL) up -d --build
 
 stop:
-	@$(DC) down
+	@$(SAIL) down
 
 node-dev:
 	@$(NODE) run dev

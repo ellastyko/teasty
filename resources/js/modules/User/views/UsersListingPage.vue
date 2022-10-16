@@ -1,12 +1,12 @@
 <template>
     <div>
-        Create Receipt
+        Users Listing
     </div>
 </template>
 
 <script>
 export default {
-    name: "CreateReceiptPage"
+    name: "UsersListingPage"
 }
 </script>
 

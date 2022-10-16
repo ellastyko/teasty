@@ -1,9 +1,9 @@
 import ProfilePage from "./views/ProfilePage.vue";
-import UsersListPage from "./views/UsersListPage.vue";
+import UsersListingPage from "./views/UsersListingPage.vue";
 
 const components = {
     ProfilePage,
-    UsersListPage
+    UsersListingPage
 };
 
 export default components;

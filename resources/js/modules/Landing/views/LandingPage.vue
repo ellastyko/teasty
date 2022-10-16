@@ -1,30 +1,31 @@
 <template>
     <div>
-        Main
+        Landing
     </div>
 </template>
 
 <script>
-    import { mapActions, mapGetters, mapMutations } from 'vuex'
 
     export default {
-
-        name: 'HomePage',
+        name: 'LandingPage',
         components: { },
         mounted() {
-            console.log( this.$store.state.profile )
         },
-        filters: {  },
         computed: {
-            ...mapGetters(['getProfile']),
+
         },
         data() {
             return {
-
+                selectedCountry: 'Germany',
+                filteredCountriesBasic: [
+                    'Germany', 'Russia'
+                ]
             }
         },
         methods: {
+            searchCountry () {
 
+            }
         }
     }
 </script>

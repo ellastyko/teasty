@@ -2,16 +2,16 @@
 
 namespace App\Repositories;
 
-use App\Models\User;
+use App\Models\Receipt;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
- * Class UserRepositoryEloquent.
+ * Class ReceiptRepository
  *
  * @package namespace App\Repositories;
  */
-class UserRepository extends BaseRepository
+class ReceiptRepository extends BaseRepository
 {
     /**
      * Specify Model class name
@@ -20,7 +20,7 @@ class UserRepository extends BaseRepository
      */
     public function model(): string
     {
-        return User::class;
+        return Receipt::class;
     }
 
     /**

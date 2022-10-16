@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('receipt_steps', function (Blueprint $table) {
             $table->id();
-            $table->string('text');
+            $table->string('title');
+            $table->mediumText('content');
             $table->string('image')->nullable();
 
             $table->foreignId('receipt_id')

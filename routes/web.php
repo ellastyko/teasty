@@ -31,14 +31,16 @@ use App\Http\Controllers\Web\{
 
 Route::get('/', LandingController::class)->name('landing');
 
-Route::get('/login', LoginController::class)->name('login');
-Route::get('/register', RegisterController::class)->name('register');
-Route::get('/forgot-password', ForgotPasswordController::class)->name('forgot-password');
-Route::get('/password-reset/{token}', PasswordResetController::class)->name('password-reset');
-
 Route::get('/users', UsersController::class);
 
 Route::get('/profile', ProfileController::class);
+
+Route::group(['middleware' => 'guest:sanctum'], function () {
+    Route::get('/login', LoginController::class)->name('login');
+    Route::get('/register', RegisterController::class)->name('register');
+    Route::get('/forgot-password', ForgotPasswordController::class)->name('forgot-password');
+    Route::get('/password-reset/{token}', PasswordResetController::class)->name('password-reset');
+});
 
 Route::group([
     'prefix' => 'receipts',

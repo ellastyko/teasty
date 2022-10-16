@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->bigInteger('cook_time');
             $table->string('description');
+            $table->string('image')->nullable();
 
             $table->foreignId('author')
                 ->nullable()
