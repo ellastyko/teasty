@@ -1,11 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\Auth\{
+    ForgotPasswordController,
+    LoginController,
+    PasswordResetController,
+    RegisterController,
+};
+use App\Http\Controllers\Web\Receipt\{
+    CreateReceiptController,
+    ShowReceiptController,
+    ReceiptListingController
+};
 use App\Http\Controllers\Web\{
-    Auth\ForgotPasswordController,
-    Auth\LoginController,
-    Auth\PasswordResetController,
-    Auth\RegisterController,
     LandingController,
     ProfileController,
     UsersController
@@ -32,3 +39,11 @@ Route::get('/password-reset/{token}', PasswordResetController::class)->name('pas
 Route::get('/users', UsersController::class);
 
 Route::get('/profile', ProfileController::class);
+
+Route::group([
+    'prefix' => 'receipts',
+], function () {
+    Route::get('/', ReceiptListingController::class);
+    Route::get('/create', CreateReceiptController::class)->middleware('auth:sanctum');
+    Route::get('/{id}', ShowReceiptController::class);
+});

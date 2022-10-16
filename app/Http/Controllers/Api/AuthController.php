@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Actions\{ForgotPasswordAction, LoginAction, PasswordResetAction, RegisterAction};
+use App\Actions\Auth\{ForgotPasswordAction, LoginAction, PasswordResetAction, RegisterAction};
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\{ForgotPasswordRequest, LoginRequest, PasswordResetRequest, RegisterRequest};
 use Illuminate\Http\JsonResponse;
@@ -56,7 +56,7 @@ class AuthController extends Controller
      */
     public function forgotPassword(ForgotPasswordRequest $request, ForgotPasswordAction $action): JsonResponse
     {
-        $status = $action->handle($request->only('email'));
+        $status = $action->handle($request->validated());
 
         return response()->json([
             'message' => trans($status)
