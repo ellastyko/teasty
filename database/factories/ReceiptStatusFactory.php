@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Enum\ReceiptStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ingredient>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Receipt>
  */
-class IngredientFactory extends Factory
+class ReceiptStatusFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,7 @@ class IngredientFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'slug' => ReceiptStatus::random(),
         ];
     }
 }

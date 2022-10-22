@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ingredients', function (Blueprint $table) {
+        Schema::create('receipt_category', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
 
             $table->foreignId('receipt_id')
-                ->nullable()
                 ->constrained('receipts')
-                ->nullOnDelete();
+                ->cascadeOnDelete();
+
+            $table->foreignId('category_id')
+                ->constrained('categories')
+                ->cascadeOnDelete();
         });
     }
 
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredients');
+        Schema::dropIfExists('receipt_categories');
     }
 };

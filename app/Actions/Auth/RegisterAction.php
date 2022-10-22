@@ -3,6 +3,7 @@
 namespace App\Actions\Auth;
 
 use App\Repositories\UserRepository;
+use BaseAction;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -11,7 +12,7 @@ use Prettus\Validator\Exceptions\ValidatorException;
 /**
  * Class RegisterAction
  */
-class RegisterAction
+class RegisterAction extends BaseAction
 {
     /**
      * @param UserRepository $userRepository

@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
-use App\Models\traits\HasReceipt;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ReceiptStep extends Model
+class ReceiptCategory extends Model
 {
-    use HasFactory, HasReceipt;
+    use HasFactory;
+
+    /**
+     * @var string
+     */
+    protected $table = 'receipt_category';
 
     /**
      * Indicates if the model should be timestamped.
@@ -24,9 +27,7 @@ class ReceiptStep extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
-        'content',
-        'image',
         'receipt_id',
+        'category_id',
     ];
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\ReceiptStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,17 +14,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('receipts', function (Blueprint $table) {
+        Schema::create('receipt_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->bigInteger('cook_time');
-            $table->string('image')->nullable();
+            $table->enum('slug', ReceiptStatus::all());
+            $table->string('message')->nullable();
 
-            $table->foreignId('author')
-                ->nullable()
-                ->constrained('users')
-                ->nullOnDelete();
+            $table->foreignId('receipt_id')
+                ->constrained('receipts')
+                ->cascadeOnDelete();
 
             $table->timestamps();
         });
@@ -36,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receipts');
+        Schema::dropIfExists('receipt_statuses');
     }
 };

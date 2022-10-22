@@ -2,6 +2,7 @@
 
 namespace App\Actions\Auth;
 
+use BaseAction;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
@@ -10,7 +11,7 @@ use Illuminate\Support\Str;
 /**
  * Class PasswordResetAction
  */
-class PasswordResetAction
+class PasswordResetAction extends BaseAction
 {
     /**
      * @param $data

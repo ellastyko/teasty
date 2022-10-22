@@ -1,6 +1,6 @@
 <template>
     <section class="container">
-
+        <LoginForm/>
     </section>
 </template>
 
@@ -16,17 +16,24 @@ export default {
 
         }
     },
+    mounted() {
+        this.login();
+    },
     components: {
         LoginForm,
     },
     methods: {
-        searchCountry() {
-            console.log('here')
+        login() {
+            axios.post('/api/auth/register', {
+                login: 'looo',
+                password: '000',
+
+            }).then(function (data) {
+                console.log(data)
+            }).catch(function (error) {
+                console.log(error)
+            })
         }
     }
 }
 </script>
-
-<style scoped>
-
-</style>

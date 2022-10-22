@@ -6,8 +6,9 @@ use App\Actions\Auth\{ForgotPasswordAction, LoginAction, PasswordResetAction, Re
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\{ForgotPasswordRequest, LoginRequest, PasswordResetRequest, RegisterRequest};
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Response;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 /**
  * Authentication controller
@@ -17,17 +18,24 @@ class AuthController extends Controller
     /**
      * @param LoginRequest $request
      * @param LoginAction $action
-     * @return Response
+     * @return JsonResponse
      */
-    public function login(LoginRequest $request, LoginAction $action): Response
+    public function login(LoginRequest $request, LoginAction $action): JsonResponse
     {
-        return $action->handle($request->only('email', 'password'));
+        $user = $action->handle($request->only('email', 'password'));
+
+        return response()
+            ->json([
+                'message' => trans('auth.login'),
+                'user'    => $user,
+            ])
+            ->cookie('access-token', $user->createToken($user->email)->plainTextToken);
     }
 
     /**
-     * @return Response
+     * @return JsonResponse
      */
-    public function logout(): Response
+    public function logout(): JsonResponse
     {
         Auth::logout();
 
@@ -40,6 +48,7 @@ class AuthController extends Controller
      * @param RegisterRequest $request
      * @param RegisterAction $action
      * @return JsonResponse
+     * @throws ValidatorException
      */
     public function register(RegisterRequest $request, RegisterAction $action): JsonResponse
     {

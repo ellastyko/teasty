@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('receipt_steps', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->string('image')->nullable();
+        Schema::create('receipt_ingredients', function (Blueprint $table) {
+            $table->string('name');
+            $table->string('amount');
 
             $table->foreignId('receipt_id')
                 ->constrained('receipts')
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receipts');
+        Schema::dropIfExists('ingredients');
     }
 };

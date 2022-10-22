@@ -1,10 +1,10 @@
 <template>
-    USERS
+
 </template>
 
 <script>
 export default {
-    name: "UsersPage"
+    name: "Layout"
 }
 </script>
 

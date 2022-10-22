@@ -3,29 +3,42 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\ReceiptStoreRequest;
+use App\Http\Resources\ReceiptResource;
+use App\Repositories\ReceiptRepository;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
+use Prettus\Repository\Exceptions\RepositoryException;
 
 class ReceiptController extends Controller
 {
+    public function __construct(protected ReceiptRepository $receiptRepository)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return AnonymousResourceCollection
+     * @throws RepositoryException
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        //
+//        return ReceiptResource::collection($this->receiptRepository
+//                ->pushCriteria()
+//        )
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ReceiptStoreRequest $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(ReceiptStoreRequest $request)
     {
-        //
+
     }
 
     /**
@@ -42,7 +55,7 @@ class ReceiptController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

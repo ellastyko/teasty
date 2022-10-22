@@ -3,12 +3,13 @@
 namespace App\Actions\Auth;
 
 use App\Events\ForgotPassword;
+use BaseAction;
 use Illuminate\Support\Facades\Password;
 
 /**
  * Class ForgotPasswordAction
  */
-class ForgotPasswordAction
+class ForgotPasswordAction extends BaseAction
 {
     /**
      * @param array $data

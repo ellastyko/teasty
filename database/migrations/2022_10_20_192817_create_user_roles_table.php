@@ -13,17 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('receipts', function (Blueprint $table) {
+        Schema::create('user_roles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->bigInteger('cook_time');
-            $table->string('image')->nullable();
-
-            $table->foreignId('author')
-                ->nullable()
+            $table->foreignId('user_id')
                 ->constrained('users')
-                ->nullOnDelete();
+                ->cascadeOnDelete();
 
             $table->timestamps();
         });
@@ -36,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receipts');
+        Schema::dropIfExists('user_roles');
     }
 };

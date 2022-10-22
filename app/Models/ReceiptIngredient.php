@@ -6,9 +6,16 @@ use App\Models\traits\HasReceipt;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ingredient extends Model
+class ReceiptIngredient extends Model
 {
     use HasFactory, HasReceipt;
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +24,7 @@ class Ingredient extends Model
      */
     protected $fillable = [
         'name',
+        'amount',
         'receipt_id',
     ];
 }

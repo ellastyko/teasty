@@ -2,33 +2,26 @@
 
 namespace App\Actions\Auth;
 
-use App\Models\User;
-use Illuminate\Http\JsonResponse;
+use BaseAction;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\UnauthorizedException;
 
 /**
  * Class LoginAction
  */
-class LoginAction
+class LoginAction extends BaseAction
 {
     /**
      * @param array $credentials
-     * @return JsonResponse
+     * @return Authenticatable
      */
-    public function handle(array $credentials): JsonResponse
+    public function handle(array $credentials): Authenticatable
     {
         if (!Auth::attempt($credentials)) {
             throw new UnauthorizedException(trans('auth.failed'), 401);
         }
 
-        $user = User::current();
-
-        return response()
-            ->json([
-                'message' => trans('auth.login'),
-                'user'    => $user,
-            ])
-            ->cookie('access-token', $user->createToken($user->email)->plainTextToken);
+        return Auth::user();
     }
 }

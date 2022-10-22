@@ -2,11 +2,13 @@
 
 namespace App\Enum;
 
-class Role
+class Role extends Enum
 {
-    public const USER = 1;
+    public const USER = 'user';
 
-    public const ADMIN = 2;
+    public const EMPLOYEE = 'employee';
+
+    public const ADMIN = 'admin';
 
     /**
      * @return int[]
@@ -14,8 +16,9 @@ class Role
     public static function all(): array
     {
         return [
-            Role::USER,
-            Role::ADMIN,
+            self::USER,
+            self::EMPLOYEE,
+            self::ADMIN,
         ];
     }
 }

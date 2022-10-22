@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Web\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class FavoriteController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -15,6 +15,6 @@ class UsersController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('user.users');
+        return view('user.favorites');
     }
 }

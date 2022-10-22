@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use App\Models\traits\HasRoles;
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -52,13 +52,13 @@ class User extends Authenticatable
      */
     public static function current(): mixed
     {
-        return app(Guard::class)->user();
+        return Auth::guard('sanctum')->user();
     }
 
     /**
      * @return string
      */
-    public function getFullName(): string
+    public function getAttributeFullName(): string
     {
         return ucfirst($this->name) . ' ' . ucfirst($this->surname);
     }
