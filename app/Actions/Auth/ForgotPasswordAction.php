@@ -3,7 +3,7 @@
 namespace App\Actions\Auth;
 
 use App\Events\ForgotPassword;
-use BaseAction;
+use App\Actions\BaseAction;
 use Illuminate\Support\Facades\Password;
 
 /**

@@ -25,6 +25,7 @@ return new class extends Migration
                 ->constrained('users')
                 ->nullOnDelete();
 
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

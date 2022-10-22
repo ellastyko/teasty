@@ -3,7 +3,7 @@
 namespace App\Actions\Auth;
 
 use App\Repositories\UserRepository;
-use BaseAction;
+use App\Actions\BaseAction;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;

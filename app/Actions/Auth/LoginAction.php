@@ -2,7 +2,7 @@
 
 namespace App\Actions\Auth;
 
-use BaseAction;
+use App\Actions\BaseAction;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\UnauthorizedException;

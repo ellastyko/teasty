@@ -19,5 +19,6 @@ class ForgotPassword
      */
     public function __construct(public object $user, public string $token)
     {
+        dd('f');
     }
 }

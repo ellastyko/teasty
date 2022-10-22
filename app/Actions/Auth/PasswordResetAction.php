@@ -2,7 +2,7 @@
 
 namespace App\Actions\Auth;
 
-use BaseAction;
+use App\Actions\BaseAction;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;

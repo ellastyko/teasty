@@ -28,6 +28,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::updateOrInsert(array_map(fn($category) => ['name' => $category],self::CATEGORIES));
+        Category::insert(array_map(fn($category) => ['name' => $category],self::CATEGORIES));
     }
 }

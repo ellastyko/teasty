@@ -45,23 +45,23 @@ truncate:
 
 # Dev
 env:
-	cp .env.example .env
+	@cp .env.example .env
 
 keygen:
 	$(ARTISAN) key:generate
 
 deps:
-	composer install
-	$(NODE) install
+	@composer install
+	@$(NODE) install
 
 clear:
-	$(ARTISAN) optimize:clear
+	@$(ARTISAN) optimize:clear
 
 chmod:
-	sudo chmod -R 777 storage
+	@sudo chmod -R 777 storage
 
 frontend:
-	$(ARTISAN) frontend:translations && $(ARTISAN) frontend:validation
+	@$(ARTISAN) frontend:translations && $(ARTISAN) frontend:validation
 
 
 schedule:

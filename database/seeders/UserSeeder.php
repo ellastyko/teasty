@@ -14,8 +14,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create(['email' => 'test@test.com']);
-        User::factory(10)
-            ->create();
+        if (config('app.env') == 'local') {
+            User::factory()->create(['email' => 'vadimsergeev1337@gmail.com']);
+
+            User::factory(10)->create();
+        }
     }
 }
