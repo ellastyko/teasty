@@ -19,7 +19,7 @@ class LoginAction extends BaseAction
     public function handle(array $credentials): Authenticatable
     {
         if (!Auth::attempt($credentials)) {
-            throw new UnauthorizedException(trans('auth.failed'), 401);
+            throw new UnauthorizedException(trans('auth.failed'), 422);
         }
 
         return Auth::user();

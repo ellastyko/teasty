@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Enum\ReceiptStatus;
+use App\Models\Category;
 use App\Models\Receipt;
 use App\Models\ReceiptIngredient;
-use App\Models\ReceiptStatus;
 use App\Models\ReceiptStep;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ReceiptSeeder extends Seeder
@@ -21,8 +21,16 @@ class ReceiptSeeder extends Seeder
         Receipt::factory(20)
             ->has(ReceiptStep::factory(5))
             ->has(ReceiptIngredient::factory(5))
-            ->has(ReceiptStatus::factory(1))
             ->create()
-            ->each(fn(Receipt $receipt) => $receipt->categories()->sync([1]));
+            ->each(function(Receipt $receipt) {
+                    /* Seed receipt_category table */
+                    $receipt->categories()->sync(
+                        Category::all()->random(5)->pluck('id')
+                    );
+
+                    /* Seed receipt_status */
+                    $receipt->status()->create(['slug' => ReceiptStatus::random()]);
+                }
+            );
     }
 }

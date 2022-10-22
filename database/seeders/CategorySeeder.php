@@ -14,6 +14,11 @@ class CategorySeeder extends Seeder
         'pilaf',
         'fast',
         'milkshakes',
+        'breakfast',
+        'lunch',
+        'stake',
+        'omelette',
+        'roast',
     ];
 
     /**
@@ -23,6 +28,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::insert(array_map(fn($category) => ['name' => $category],self::CATEGORIES));
+        Category::updateOrInsert(array_map(fn($category) => ['name' => $category],self::CATEGORIES));
     }
 }

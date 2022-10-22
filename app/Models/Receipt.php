@@ -51,7 +51,7 @@ class Receipt extends Model
     /**
      * @return HasOne
      */
-    public function receiptStatus(): HasOne
+    public function status(): HasOne
     {
         return $this->hasOne(ReceiptStatus::class);
     }

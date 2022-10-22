@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ReceiptFactory extends Factory
 {
-    protected array $dishes = [
+    private const DISHES = [
         'burger',
         'pasta',
         'pie',
@@ -25,7 +25,7 @@ class ReceiptFactory extends Factory
      */
     public function definition()
     {
-        $dish = $this->dishes[rand(0, 4)];
+        $dish = self::DISHES[rand(0, 4)];
 
         return [
             'title'       => "How to cook $dish",
