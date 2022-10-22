@@ -9,7 +9,6 @@ use Illuminate\Contracts\View\View;
 
 class ShowReceiptController extends Controller
 {
-
     /**
      * @return Application|Factory|View
      */

@@ -76,10 +76,10 @@ test:
 
 # Code style
 phpcs:
-	./vendor/bin/phpcs --standard=./phpcs.xml
+	@./vendor/bin/phpcs --standard=./phpcs.xml
 
 phpcbf:
-	./vendor/bin/phpcbf --standard=./phpcs.xml
+	@./vendor/bin/phpcbf --standard=./phpcs.xml
 
 phpmd:
 	sudo ./vendor/bin/phpmd app xml phpmd.xml  --reportfile reports/phpmd-report.xml

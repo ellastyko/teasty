@@ -22,7 +22,7 @@ class ReceiptSeeder extends Seeder
             ->has(ReceiptStep::factory(5))
             ->has(ReceiptIngredient::factory(5))
             ->create()
-            ->each(function(Receipt $receipt) {
+            ->each(function (Receipt $receipt) {
                     /* Seed receipt_category table */
                     $receipt->categories()->sync(
                         Category::all()->random(5)->pluck('id')
@@ -30,7 +30,6 @@ class ReceiptSeeder extends Seeder
 
                     /* Seed receipt_status */
                     $receipt->status()->create(['slug' => ReceiptStatus::random()]);
-                }
-            );
+            });
     }
 }

@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReceiptIngredient extends Model
 {
-    use HasFactory, HasReceipt;
+    use HasFactory;
+    use HasReceipt;
 
     /**
      * Indicates if the model should be timestamped.

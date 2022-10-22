@@ -171,7 +171,7 @@ return [
    |
    */
 
-  'forum'                   => [
+    'forum'                   => [
         'enabled'           => false,
         'default'           => 'disqus',
         'services'          => [

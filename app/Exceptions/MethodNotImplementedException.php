@@ -2,5 +2,4 @@
 
 class MethodNotImplementedException extends Exception
 {
-
 }

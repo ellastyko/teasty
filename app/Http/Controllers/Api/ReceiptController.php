@@ -38,7 +38,6 @@ class ReceiptController extends Controller
      */
     public function store(ReceiptStoreRequest $request)
     {
-
     }
 
     /**
