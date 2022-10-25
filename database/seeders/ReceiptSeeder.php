@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Receipt;
 use App\Models\ReceiptIngredient;
 use App\Models\ReceiptStep;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ReceiptSeeder extends Seeder

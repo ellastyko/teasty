@@ -8,6 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SendPasswordResetNotification implements ShouldQueue
@@ -26,5 +27,7 @@ class SendPasswordResetNotification implements ShouldQueue
         $link = config('app.url') . '/password-reset?token=' . $event->token;
 
         Mail::to($event->user)->send(new PasswordResetEmail($event->user, $link));
+
+        Log::info("Password reset link was send | User {$event->user->email}");
     }
 }

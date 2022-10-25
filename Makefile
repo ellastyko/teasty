@@ -7,8 +7,8 @@ SSH := $(APP) bash
 SAIL := ./vendor/bin/sail
 
 setup: env keygen deps start migrate seeds chmod
-good: deps clear migrate seeds node-dev
-build: env deps start node-build
+good: deps clear refresh seeds node-dev
+build: env deps start migrate node-build
 
 restart: stop start
 
@@ -66,6 +66,9 @@ frontend:
 
 schedule:
 	$(ARTISAN) schedule:run
+
+queue:
+	@$(ARTISAN) queue:work
 
 routes:
 	$(ARTISAN) route:list

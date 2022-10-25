@@ -14,8 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('receipt_category', function (Blueprint $table) {
-            $table->id();
-
             $table->foreignId('receipt_id')
                 ->constrained('receipts')
                 ->cascadeOnDelete();
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receipt_categories');
+        Schema::dropIfExists('receipt_category');
     }
 };

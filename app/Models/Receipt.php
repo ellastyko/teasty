@@ -56,7 +56,7 @@ class Receipt extends Model
         return $this->hasOne(ReceiptStatus::class);
     }
 
-    /**
+    /** // USER -> UserProduct -> Product
      * @return BelongsToMany
      */
     public function categories(): BelongsToMany
