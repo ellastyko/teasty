@@ -1,14 +1,14 @@
 OS := $(shell uname)
 DC := docker-compose exec
 ARTISAN := php artisan
+SAIL := ./vendor/bin/sail
+
 NODE := npm # or yarn
 APP := $(DC) app
-SSH := $(APP) bash
-SAIL := ./vendor/bin/sail
 
 setup: env keygen deps start migrate seeds chmod
 good: deps clear refresh seeds node-dev
-build: env deps start migrate node-build
+build: deps start migrate node-build
 
 restart: stop start
 
