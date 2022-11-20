@@ -2,14 +2,13 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\InteractsWithSockets;
+use App\Models\User;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
 class ForgotPassword
 {
     use Dispatchable;
-    use InteractsWithSockets;
     use SerializesModels;
 
     /**
@@ -17,7 +16,7 @@ class ForgotPassword
      *
      * @return void
      */
-    public function __construct(public object $user, public string $token)
+    public function __construct(public User $user, public string $token)
     {
     }
 }
