@@ -9,7 +9,6 @@ use Illuminate\Queue\SerializesModels;
 class UserDeleted
 {
     use Dispatchable;
-    use InteractsWithSockets;
     use SerializesModels;
 
     /**
