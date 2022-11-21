@@ -15,9 +15,9 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['string', 'max:50'],
-            'surname' => ['string','max:50'],
-            'email' => ['string','email', 'max:64'],
+            'name'     => ['string', 'max:50'],
+            'surname'  => ['string','max:50'],
+            'email'    => ['string','email', 'max:64'],
             'password' => ['string', 'confirmed',
                 Password::min(8)
                 ->mixedCase()
@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
                 ->numbers()
                 ->symbols()
                 ->uncompromised(),
-            ]
+            ],
         ];
     }
 }

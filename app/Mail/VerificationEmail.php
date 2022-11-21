@@ -37,7 +37,7 @@ class VerificationEmail extends Mailable
             ->subject(trans('Email verification'))
             ->with([
                 'user' => $this->user,
-                'link' => $this->link
+                'link' => $this->link,
             ]);
     }
 }
