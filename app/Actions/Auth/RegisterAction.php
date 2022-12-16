@@ -29,7 +29,7 @@ class RegisterAction extends BaseAction
     public function handle(array $credentials)
     {
         $credentials['password'] = bcrypt($credentials['password']);
-        $user = $this->userRepository->create($credentials);
+        $user                    = $this->userRepository->create($credentials);
 
         event(new Registered($user));
 

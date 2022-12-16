@@ -1,23 +1,17 @@
 <?php
 
-use App\Http\Controllers\Web\LandingController;
+use App\Console\Controllers\Web\LandingController;
+use App\Http\Controllers\Web\Auth\{PasswordResetController,};
+use App\Http\Controllers\Web\Auth\ForgotPasswordController;
+use App\Http\Controllers\Web\Auth\LoginController;
+use App\Http\Controllers\Web\Auth\RegisterController;
+use App\Http\Controllers\Web\Receipt\{ReceiptListingController};
+use App\Http\Controllers\Web\Receipt\CreateReceiptController;
+use App\Http\Controllers\Web\Receipt\ShowReceiptController;
+use App\Http\Controllers\Web\User\{UsersController};
+use App\Http\Controllers\Web\User\FavoriteController;
+use App\Http\Controllers\Web\User\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Web\Auth\{
-    ForgotPasswordController,
-    LoginController,
-    PasswordResetController,
-    RegisterController,
-};
-use App\Http\Controllers\Web\Receipt\{
-    CreateReceiptController,
-    ShowReceiptController,
-    ReceiptListingController
-};
-use App\Http\Controllers\Web\User\{
-    FavoriteController,
-    ProfileController,
-    UsersController
-};
 
 /*
 |--------------------------------------------------------------------------

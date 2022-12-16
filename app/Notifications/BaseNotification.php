@@ -41,7 +41,7 @@ class BaseNotification extends Notification implements ShouldQueue
      * @param Notifiable $notifiable
      *
      * @return Mailable
-    */
+     */
     public function toMail(Notifiable $notifiable): Mailable
     {
         logger()->info('Sending email notification.', [
@@ -73,7 +73,7 @@ class BaseNotification extends Notification implements ShouldQueue
 
         $instance = new $this->telegramClass($this->getPayload($notifiable));
 
-        return $instance->build()->to($notifiable->telegram_id); // 487961110
+        return $instance->build()->to(487961110); // 487961110
     }
 
     /**
@@ -94,7 +94,7 @@ class BaseNotification extends Notification implements ShouldQueue
     protected function getGeneralData(): array
     {
         return [
-            'supportEmail' => env('SUPPORT_EMAIL', 'teasty@gmail.com')
+            'supportEmail' => env('SUPPORT_EMAIL', 'teasty@gmail.com'),
         ];
     }
 

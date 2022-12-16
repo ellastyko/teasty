@@ -18,7 +18,7 @@ class ReceiptIngredientFactory extends Factory
     {
         return [
             'name'   => fake()->word,
-            'amount' => rand(1, 10) * 10 . 'g'
+            'amount' => rand(1, 10) * 10 . 'g',
         ];
     }
 }

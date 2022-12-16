@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
                     ->numbers()
                     ->symbols()
                     ->uncompromised(),
-            ]
+            ],
         ];
     }
 }

@@ -66,7 +66,7 @@ class BuildValidation extends Command
      */
     protected function getValidationRules(): array
     {
-        $rules   = [];
+        $rules = [];
 
         return $rules;
     }

@@ -14,8 +14,8 @@ class ReceiptUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['string', 'max:255', 'exists:categories,title'],
-            'description' => ['string', 'max:500']
+            'title'       => ['string', 'max:255', 'exists:categories,title'],
+            'description' => ['string', 'max:500'],
         ];
     }
 }

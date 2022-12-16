@@ -3,13 +3,12 @@
 namespace App\Providers;
 
 use App\Events\ForgotPassword;
-use App\Listeners\SendPasswordResetNotification;
-use App\Listeners\SendSuccessfulPasswordResetNotification;
+use App\Listeners\ForgotPasswordListener;
+use App\Listeners\PasswordResetListener;
+use App\Listeners\UserRegisteredListener;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -19,16 +18,16 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
+        Registered::class     => [
+            UserRegisteredListener::class,
         ],
         ForgotPassword::class => [
-            SendPasswordResetNotification::class,
+            ForgotPasswordListener::class,
         ],
-        PasswordReset::class => [
-            SendSuccessfulPasswordResetNotification::class,
+        PasswordReset::class  => [
+            PasswordResetListener::class,
             // Add Mail notification to admin
-        ]
+        ],
     ];
 
     /**

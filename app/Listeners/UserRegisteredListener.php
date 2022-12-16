@@ -2,10 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Mail\SuccessfulPasswordResetEmail;
+use App\Mail\VerificationEmail;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Mail;
 
-class SendSuccessfulPasswordResetNotification
+class UserRegisteredListener
 {
     /**
      * Handle the event.
@@ -15,6 +18,6 @@ class SendSuccessfulPasswordResetNotification
      */
     public function handle(object $event)
     {
-         Mail::to($event->user)->send(new SuccessfulPasswordResetEmail($event->user));
+        // TODO
     }
 }

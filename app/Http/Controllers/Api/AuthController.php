@@ -40,7 +40,7 @@ class AuthController extends Controller
         Auth::logout();
 
         return response()->json([
-            'message' => trans('auth.logout')
+            'message' => trans('auth.logout'),
         ], Response::HTTP_NO_CONTENT);
     }
 
@@ -54,7 +54,7 @@ class AuthController extends Controller
     {
         return response()->json([
             'message' => trans('auth.registered'),
-            'user'    => $action->handle($request->validated())
+            'user'    => $action->handle($request->validated()),
         ]);
     }
 
@@ -68,10 +68,9 @@ class AuthController extends Controller
         $status = $action->handle($request->validated());
 
         return response()->json([
-            'message' => trans($status)
+            'message' => trans($status),
         ]);
     }
-
 
     /**
      * @param PasswordResetRequest $request
@@ -83,7 +82,7 @@ class AuthController extends Controller
         $status = $action->handle($request->validated());
 
         return response()->json([
-            'message' => trans($status)
+            'message' => trans($status),
         ]);
     }
 }

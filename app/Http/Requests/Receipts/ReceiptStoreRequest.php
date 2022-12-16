@@ -14,8 +14,8 @@ class ReceiptStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255', 'unique:categories,title'],
-            'description' => ['required', 'string', 'max:500']
+            'title'       => ['required', 'string', 'max:255', 'unique:categories,title'],
+            'description' => ['required', 'string', 'max:500'],
         ];
     }
 }

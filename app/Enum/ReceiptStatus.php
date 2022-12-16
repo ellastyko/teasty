@@ -4,15 +4,15 @@ namespace App\Enum;
 
 class ReceiptStatus extends Enum
 {
-    const DRAFT      = 'draft';
+    const DRAFT = 'draft';
 
     const PROCESSING = 'processing';
 
-    const ACTIVE     = 'active';
+    const ACTIVE = 'active';
 
-    const BANNED     = 'banned';
+    const BANNED = 'banned';
 
-    const DELETED    = 'deleted';
+    const DELETED = 'deleted';
 
     /**
      * @return int[]
