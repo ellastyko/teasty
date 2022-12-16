@@ -40,8 +40,8 @@ class ForgotPasswordNotification extends BaseNotification
     protected function getNotificationSpecificData(Notifiable $notifiable): array
     {
         return [
-            'title' => 'Password rest link',
-            'user'  => $notifiable,
+            'title'     => 'Password rest link',
+            'user'      => $notifiable,
             'resetLink' => $this->getResetLink(),
         ];
     }

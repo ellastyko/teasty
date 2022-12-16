@@ -18,7 +18,7 @@ class ForgotPassword extends Mail
             ->subject(trans('passwords.forgot'))
             ->with([
                 'user'      => $this->payload['user'],
-                'resetLink' => $this->payload['resetLink']
+                'resetLink' => $this->payload['resetLink'],
             ]);
     }
 }

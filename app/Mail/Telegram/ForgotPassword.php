@@ -16,6 +16,9 @@ class ForgotPassword extends Telegram
     public function build()
     {
         return $this->message
-            ->content("Hello there!");
+            ->view('telegram.forgot_password', [
+                    'user'      => $this->payload['user'],
+                    'resetLink' => $this->payload['resetLink'],
+                ]);
     }
 }
