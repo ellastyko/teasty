@@ -12,11 +12,11 @@ class PasswordResetRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'email' => ['required', 'email'],
-            'token' => ['required', 'string'],
+            'email'    => ['required', 'email'],
+            'token'    => ['required', 'string'],
             'password' => [
                 'required',
                 'confirmed',
@@ -25,7 +25,7 @@ class PasswordResetRequest extends FormRequest
                     ->letters()
                     ->numbers()
                     ->symbols(),
-            ]
+            ],
         ];
     }
 }
