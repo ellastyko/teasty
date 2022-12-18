@@ -1,6 +1,6 @@
 <?php
 
-use App\Console\Controllers\Web\LandingController;
+use App\Http\Controllers\Web\LandingController;
 use App\Http\Controllers\Web\Auth\{PasswordResetController,};
 use App\Http\Controllers\Web\Auth\ForgotPasswordController;
 use App\Http\Controllers\Web\Auth\LoginController;

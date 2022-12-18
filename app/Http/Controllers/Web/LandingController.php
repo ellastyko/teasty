@@ -11,7 +11,7 @@ class LandingController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function __invoke()
+    public function __invoke(): \Illuminate\Contracts\View\View
     {
         return view('landing.landing');
     }
