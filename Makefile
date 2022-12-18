@@ -1,10 +1,11 @@
 OS := $(shell uname)
 DC := docker-compose exec
-ARTISAN := php artisan
 SAIL := ./vendor/bin/sail
 
 NODE := npm # or yarn
 APP := $(DC) app
+ARTISAN := $(APP) php artisan
+
 
 setup: env keygen deps start migrate seeds chmod
 good: deps clear refresh seeds node-dev
@@ -32,33 +33,33 @@ migrate:
 	@$(APP) $(ARTISAN) migrate
 
 refresh:
-	@$(APP) $(ARTISAN) migrate:refresh
+	@$(ARTISAN) migrate:refresh
 
 fresh:
-	@$(APP) $(ARTISAN) migrate:fresh
+	@$(ARTISAN) migrate:fresh
 
 seeds:
-	@$(APP) $(ARTISAN) db:seed
+	@$(ARTISAN) db:seed
 
 truncate:
-	@$(APP) $(ARTISAN) db:wipe
+	@$(ARTISAN) db:wipe
 
 # Dev
 env:
 	@cp .env.example .env
 
 keygen:
-	$(ARTISAN) key:generate
+	@$(ARTISAN) key:generate
 
 deps:
-	@composer install
+	@$(APP) composer install
 	@$(NODE) install
 
 clear:
 	@$(ARTISAN) optimize:clear
 
 chmod:
-	@sudo chmod -R 777 storage
+	@sudo chmod -R 777 .
 
 frontend:
 	@$(ARTISAN) frontend:translations && $(ARTISAN) frontend:validation
@@ -79,10 +80,10 @@ test:
 
 # Code style
 phpcs:
-	@./vendor/bin/phpcs --standard=./phpcs.xml
+	@$(APP) ./vendor/bin/phpcs --standard=./phpcs.xml
 
 phpcbf:
-	@./vendor/bin/phpcbf --standard=./phpcs.xml
+	@$(APP) ./vendor/bin/phpcbf --standard=./phpcs.xml
 
 phpmd:
-	sudo ./vendor/bin/phpmd app xml phpmd.xml  --reportfile reports/phpmd-report.xml
+	@$(APP) ./vendor/bin/phpmd app xml phpmd.xml  --reportfile reports/phpmd-report.xml
