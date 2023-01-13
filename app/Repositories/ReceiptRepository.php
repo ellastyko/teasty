@@ -22,12 +22,4 @@ class ReceiptRepository extends BaseRepository
     {
         return Receipt::class;
     }
-
-    /**
-     * Boot up the repository, pushing criteria
-     */
-    public function boot()
-    {
-        $this->pushCriteria(app(RequestCriteria::class));
-    }
 }

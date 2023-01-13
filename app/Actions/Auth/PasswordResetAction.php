@@ -22,9 +22,8 @@ class PasswordResetAction extends BaseAction
         return Password::reset(
             $data,
             function ($user, $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password),
-                ])->setRememberToken(Str::random(60));
+                $user->forceFill(['password' => Hash::make($password)])
+                    ->setRememberToken(Str::random(60));
 
                 $user->save();
 
