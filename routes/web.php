@@ -37,7 +37,7 @@ Route::group(['middleware' => 'guest:sanctum'], function () {
     Route::get('/login', LoginController::class)->name('login');
     Route::get('/register', RegisterController::class);
     Route::get('/forgot-password', ForgotPasswordController::class);
-    Route::get('/password-reset/{token}', PasswordResetController::class);
+    Route::get('/password-reset', PasswordResetController::class);
 });
 
 Route::group([
@@ -56,4 +56,3 @@ Route::group([
         return 'You are admin';
     });
 });
-

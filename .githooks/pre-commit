@@ -1,0 +1,63 @@
+#!/bin/bash
+
+echo "Running pre-commit hook"
+
+CONTAINER_NAME=app
+SERVICE_NAME=app
+
+DOCKER_INSTALLED=$(command -v docker)
+
+if [ ! "${DOCKER_INSTALLED}" ]; then
+  echo "Docker not installed"
+  exit 0
+fi
+
+CID="$(docker ps -q -f status=running -f name=$CONTAINER_NAME)"
+
+if [ ! "${CID}" ]; then
+  echo "Container doesn't run. Autotests can't be run"
+  exit 0
+fi
+
+CONTAINER="docker-compose exec -T $SERVICE_NAME"
+
+STAGED_FILES_CMD=`git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\\\.php`
+
+echo "Checking PHP Lint..."
+for FILE in $STAGED_FILES_CMD
+do
+    echo $PROJECT
+    $CONTAINER php -l -d display_errors=0 $FILE
+    if [ $? != 0 ]
+    then
+        echo "Fix the error before(s) commit."
+        exit 1
+    fi
+    FILES="$FILES $FILE"
+done
+
+echo "Running PHP Code Sniffer (phpcs)..."
+$CONTAINER vendor/bin/phpcs --standard=phpcs.xml $STAGED_FILES_CMD
+if [ $? != 0 ]
+then
+    echo "Fix the error before(s) commit."
+    exit 1
+fi
+
+echo "Running PHP Code Beautifier and Fixer (phpcbf)..."
+$CONTAINER vendor/bin/phpcbf --standard=./phpcs.xml $STAGED_FILES_CMD
+if [ $? != 0 ]
+then
+    echo "Fix the error before(s) commit."
+    exit 1
+fi
+
+echo "Running PHP Mess Detector (phpmd)..."
+$CONTAINER vendor/bin/phpmd app,bootstrap,database,routes xml phpmd.xml --reportfile reports/pmd.xml --ignore-violations-on-exit
+if [ $? != 0 ]
+then
+    echo "Fix the error before(s) commit."
+    exit 1
+fi
+
+exit 0
