@@ -5,7 +5,6 @@ namespace App\Console\Commands\Frontend;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Application;
 
-// TODO
 class BuildTranslations extends Command
 {
     /**
