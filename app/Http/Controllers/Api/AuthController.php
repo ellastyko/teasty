@@ -75,9 +75,9 @@ class AuthController extends Controller
     /**
      * @param PasswordResetRequest $request
      * @param PasswordResetAction $action
-     * @return Response
+     * @return JsonResponse
      */
-    public function passwordReset(PasswordResetRequest $request, PasswordResetAction $action): Response
+    public function passwordReset(PasswordResetRequest $request, PasswordResetAction $action): JsonResponse
     {
         $status = $action->handle($request->validated());
 

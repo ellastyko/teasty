@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\LandingController;
-use App\Http\Controllers\Web\Auth\{PasswordResetController,};
+use App\Http\Controllers\Web\Auth\{OAuthController, PasswordResetController};
 use App\Http\Controllers\Web\Auth\ForgotPasswordController;
 use App\Http\Controllers\Web\Auth\LoginController;
 use App\Http\Controllers\Web\Auth\RegisterController;
@@ -35,6 +35,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::group(['middleware' => 'guest:sanctum'], function () {
     Route::get('/login', LoginController::class)->name('login');
+    Route::get('/oauth/login', [OAuthController::class, 'login'])->name('oauth-login');
+    Route::get('/oauth/callback/facebook', [OAuthController::class, 'callbackFacebook']);
     Route::get('/register', RegisterController::class);
     Route::get('/forgot-password', ForgotPasswordController::class);
     Route::get('/password-reset', PasswordResetController::class);
