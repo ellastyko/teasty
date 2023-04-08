@@ -8,10 +8,10 @@ class BaseAction implements ActionInterface
 {
     /**
      * @param mixed ...$params
-     * @return void
+     * @return mixed
      * @throws MethodNotImplementedException
      */
-    public function execute(...$params)
+    public function execute(...$params): mixed
     {
         if (!method_exists($this, 'handle')) {
             throw new MethodNotImplementedException('Method "handle" does not exist in: ' . get_class($this));

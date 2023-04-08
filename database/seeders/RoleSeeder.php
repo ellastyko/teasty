@@ -15,6 +15,10 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::insert(RoleEnum::allInArrays('slug'));
+        foreach (RoleEnum::all() as $name) {
+            Role::updateOrCreate([
+                'name' => $name,
+            ]);
+        }
     }
 }

@@ -4,14 +4,14 @@ namespace App\Models\traits;
 
 use App\Enum\Role;
 
-trait HasRoles
+trait Roles
 {
     /**
      * @return bool
      */
     public function isAdmin(): bool
     {
-        return $this->role === Role::ADMIN;
+        return $this->hasRole(Role::ADMIN);
     }
 
     /**
@@ -19,6 +19,6 @@ trait HasRoles
      */
     public function isUser(): bool
     {
-        return $this->role === Role::USER;
+        return $this->hasRole(Role::USER);
     }
 }

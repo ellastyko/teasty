@@ -7,7 +7,7 @@ APP := $(DC) app
 ARTISAN := $(APP) php artisan
 
 
-setup: env keygen deps start migrate seeds chmod
+setup: env start keygen deps migrate seeds chmod
 good: deps clear refresh seeds node-dev
 build: deps start migrate node-build
 
@@ -30,7 +30,7 @@ ssh:
 
 # DB commands
 migrate:
-	@$(APP) $(ARTISAN) migrate
+	@$(ARTISAN) migrate
 
 refresh:
 	@$(ARTISAN) migrate:refresh
