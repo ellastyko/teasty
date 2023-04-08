@@ -6,16 +6,15 @@ import authComponents from "./modules/Auth";
 import landingComponents from "./modules/Landing"
 import receiptComponents from "./modules/Receipt";
 
-// PrimeVue
-import PrimeVue from 'primevue/config';
-import primeVueComponents from "./components/primevue";
+// ElementPlus
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
 const app = new Container()
-    .use(PrimeVue)
+    .use(ElementPlus)
     .components({
         ...authComponents,
         ...landingComponents,
         ...receiptComponents,
-        ...primeVueComponents
     })
     .mount();
