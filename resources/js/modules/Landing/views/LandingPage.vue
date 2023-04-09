@@ -1,8 +1,8 @@
 <template>
     <layout guest>
         <template #main>
-            <div class="w-full h-full flex landing">
-                <div class="relative bg-white bg-opacity-50 w-full h-1/3 self-center flex justify-between">
+            <div class="landing">
+                <div class="relative bg-black bg-opacity-50 w-full h-1/3 self-center flex justify-between">
                     <div class="w-1/3 h-full flex justify-center items-center p-3">
 
                         <div class="flex justify-center items-center">

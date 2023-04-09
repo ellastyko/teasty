@@ -1,0 +1,26 @@
+.main-wrapper {
+    background: url("../images/background-1.jpg") no-repeat fixed center;
+    background-size: cover;
+
+    /**
+        Nav bar section
+     */
+    .navbar {
+        height: $--navbar-height;
+    }
+
+    /**
+        Main block
+     */
+    .main {
+        position: relative;
+        width: 100%;
+
+        .content-wrapper {
+            .content-section {
+                border-radius: 25px 25px 0 0;
+                background-color: #111827;;
+            }
+        }
+    }
+}
