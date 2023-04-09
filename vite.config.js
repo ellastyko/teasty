@@ -1,9 +1,18 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+const copy = require('rollup-plugin-copy');
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+    publicDir: 'public',
     plugins: [
+        // копируем изображения из папки resources в папку public
+        copy({
+            targets: [
+                { src: 'resources/images/**/*', dest: 'public/images' },
+                { src: 'resources/videos/**/*', dest: 'public/videos' }
+            ]
+        }),
         laravel({
             input: [
                 'resources/css/app.css',

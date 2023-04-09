@@ -5,6 +5,7 @@ import Container from "./foundation/services/container";
 import authComponents from "./modules/Auth";
 import landingComponents from "./modules/Landing"
 import receiptComponents from "./modules/Receipt";
+import components from "./components/index"
 
 // ElementPlus
 import ElementPlus from 'element-plus'
@@ -16,5 +17,6 @@ const app = new Container()
         ...authComponents,
         ...landingComponents,
         ...receiptComponents,
+        ...components
     })
     .mount();
