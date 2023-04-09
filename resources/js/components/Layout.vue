@@ -1,8 +1,8 @@
 <template>
-    <section class="main-background w-screen h-screen">
+    <div class="main-background fixed top-0 w-full h-full min-h-screen z-background overflow-auto">
         <!-- Dark overlay
         ------------------>
-        <div class="bg-black bg-opacity-50 absolute inset-0"/>
+        <div class="bg-black bg-opacity-50 fixed inset-0  z-background-overlay"/>
 
         <!-- Navigation
         ------------------>
@@ -10,8 +10,9 @@
 
         <!-- Main Container
         ------------------>
-        <slot name="main"/>
-
+        <div class="relative z-normal w-full h-full">
+            <slot name="main"/>
+        </div>
         <!-- Video background
         ------------------>
         <template v-if="videoBackground">
@@ -20,13 +21,17 @@
             </video>
             <div ref="overlay" class="overlay"/>
         </template>
-    </section>
+    </div>
 </template>
 
 <script>
     export default {
         name: 'Layout',
         props: {
+            guest: {
+                type: Boolean,
+                default: false
+            },
             videoBackground: {
                 type: Boolean,
                 default: false
@@ -44,19 +49,18 @@
                     '/videos/stock-2.mp4',
                 ],
                 images: [
-
+                    '/images/background-1.jpg',
+                    '/images/background-2.jpg',
                 ]
             }
         },
-        methods: {
-
-        }
+        methods: { }
     }
 </script>
 
 <style scoped lang="scss">
 .main-background {
-    background: url("/images/background-1.jpg") no-repeat center;
+    background: url("/images/background-1.jpg") no-repeat fixed center;
     background-size: cover;
 }
 </style>

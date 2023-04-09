@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#000000" />
     <meta
         name="description"
-        content="Teasty food forum"
+        content="Vkus food forum"
     />
 
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>

@@ -47,6 +47,6 @@ abstract class Telegram
      */
     public function build()
     {
-        return $this->message->content('Teasty | 1000+ teasty receipts');
+        return $this->message->content('Vkus | 1000+ teasty receipts');
     }
 }

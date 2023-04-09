@@ -1,7 +1,6 @@
 <template>
     <form class="col-4" method="post" action="/login" @submit.prevent="handleSubmit">
 
-        <Password v-model="form.password"/>
     </form>
 </template>
 

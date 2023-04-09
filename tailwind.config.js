@@ -14,7 +14,10 @@ module.exports = {
             xl: '1440px',
         },
         zIndex: {
-            'background': -100,
+            'background': 0,
+            'background-overlay': 1,
+            'normal': 5,
+            'navbar': 10,
             'dropdown': 1000,
             'modal': 2000,
             'overlay': 3000,
