@@ -1,16 +1,31 @@
 <template>
-    All Receipts
-    <Paginator :rows="10" :totalRecords="34" p-error></Paginator>
+    <content-section>
+        <template #content>
+            <div class="grid grid-cols-2 gap-4">
+                <receipts-listing :receipts="receipts"/>
+            </div>
+        </template>
+    </content-section>
 </template>
 
 <script>
+import ReceiptsListing from "../components/ReceiptsListing.vue";
+import {mapActions, mapState} from "vuex";
+
 export default {
     name: "ReceiptsPage",
-    data () {
-        return {
-            offset: 10,
-            totalItemsCount: 300
-        }
+    components: {ReceiptsListing},
+    mounted() {
+        this.$store.dispatch('receipt/getReceipts');
+    },
+    computed: {
+        /**
+         * Map state
+         */
+        ...mapState('receipt', ['receipts']),
+    },
+    methods: {
+        ...mapActions('receipt', ['getReceipts']),
     }
 }
 </script>

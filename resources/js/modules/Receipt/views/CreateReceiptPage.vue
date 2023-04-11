@@ -1,7 +1,9 @@
 <template>
-    <div>
-        Create Receipt
-    </div>
+    <content-section>
+        <template #content>
+
+        </template>
+    </content-section>
 </template>
 
 <script>

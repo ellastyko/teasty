@@ -1,13 +1,10 @@
-
-
 export default {
-
     namespaced: true,
     state: () => ({
         user: null
     }),
     getters: {
-        getUser(state) {
+        USER(state) {
             return state.user
         },
     },
